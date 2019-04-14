@@ -1,0 +1,27 @@
+images {
+  image: "/assets/gfx/chars/wunderbar/protagonist0.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/protagonist1.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/protagonist2.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/protagonist3.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/protagonist4.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/protagonist5.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/protagonist6.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/protagonist7.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

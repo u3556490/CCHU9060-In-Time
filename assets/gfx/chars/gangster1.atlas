@@ -1,0 +1,27 @@
+images {
+  image: "/assets/gfx/chars/wunderbar/gangster10.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/gangster11.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/gangster12.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/gangster13.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/gangster14.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/gangster15.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/gangster16.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/gangster17.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

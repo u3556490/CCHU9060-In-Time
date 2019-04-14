@@ -1,0 +1,45 @@
+local monarch = require "monarch.monarch"
+
+function init(self)
+	-- Add initialization code here
+	--msg.post(".", "enable")
+	msg.post(".", "acquire_input_focus")
+	msg.post("main:/alexa", "halt")
+	msg.post("main:/alexa", "alexa",{song = "main", delay = 0.0})
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	if (action_id == hash("multitouch") or action_id == hash("touch")) and action.pressed then 
+		local loadbtn = gui.get_node("load-btn")
+		local newbtn = gui.get_node("new-btn")
+		local quitbtn = gui.get_node("quit-btn")
+		if gui.pick_node(quitbtn, action.x, action.y) then 
+			print("game exits with code zero")
+			msg.post(".", "disable")
+			msg.post(".", "release_input_focus")
+			msg.post("@system:", "exit", {code = 0})
+		elseif gui.pick_node(newbtn, action.x, action.y) then 
+			print("new game call")
+			--msg.post("main:/alexa", "halt")
+			--msg.post("main:/alexa", "alexa", {song = "main"})
+			msg.post(".", "disable")
+			msg.post(".", "release_input_focus")
+			--monarch.show(hash("new-game"))
+			monarch.show(hash("prologue"))
+		elseif gui.pick_node(loadbtn, action.x, action.y) then 
+			print("load game call")
+			--msg.post("main:/alexa", "halt")
+			--msg.post("main:/alexa", "alexa", {song = "main"})
+			--msg.post(".", "disable")
+			--msg.post(".", "release_input_focus")
+			--monarch.show(hash("load-game"))
+			--gui.set_text(gui.get_node("load-btn/label"), "N/A")
+			monarch.show(hash("stage01"))
+		end
+	end
+end

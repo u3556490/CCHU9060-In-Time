@@ -1,0 +1,223 @@
+local monarch = require "monarch.monarch"
+local layout = "narration"
+local setlh = hash("setLayout")
+local setsh = hash("setSpeaker")
+local setth = hash("setText")
+local listh = hash("listenNext")
+local nexth = hash("next")
+local getoh = hash("getOption")
+local retch = hash("returnChoice")
+local mc_choice = nil
+------------------
+player = {
+	name = "George",
+	sex = 'M',
+	completed = { "prologue" },
+	inventory = {},
+	money = 100,
+	equipped = {},
+	reputation = 0,
+	skills = {}
+}
+
+function player.is_equipped(target)
+	if (#player["equipped"] > 0) then
+		for key, item in pairs(player["equipped"]) do
+			if (item["object"]["id"] == target) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function player.is_skilled(name)
+	if (#player.skills > 0) then
+		for key,item in pairs(player.skills) do
+			if (item.id == name) then
+				return true
+			end
+		end
+	end
+	return false
+end
+--------------------------------
+game = {}
+
+game.pause = coroutine.yield
+game.RETURN_TO_TITLE = 0
+game.RETURN_FAIL = 1
+game.RETURN_GOOD = 2
+game.PROCEED = 3
+
+function game.resume()
+	coroutine.resume(routine)
+end
+
+function game.say(str, id)
+	msg.post(".", "setText", {txt = str, speaker = id})
+	msg.post(".", "listenNext")
+	coroutine.yield()
+end
+
+function game.setLayout(name, options)
+	msg.post(".", "setLayout", {id = name, bg = options.bg, choices = options.choices})
+end
+
+function game.setSpeaker(a, b, c)
+	--[[if (c ~= nil) then	--todo: 2 speaker support
+		msg.post(".", "setSpeaker", {speaker = a, id = b, texture = c})
+	else]]
+		msg.post(".", "setSpeaker", {speaker = a, id = b, sayer = c})
+	--end
+end
+
+function game.getOption()
+	msg.post(".", "getOption")
+	coroutine.yield()
+	return mc_choice
+end
+
+function game.getPlayer()
+	return player
+end
+
+function game.done(status, money, reward, reputation, skills)
+	coroutine.yield()
+	if (status == game.RETURN_TO_TITLE) then
+		if (reward ~= nil) then
+			for index,item in pairs(reward) do
+				table.insert(player["inventory"],item)
+			end
+		end
+		if (money ~= nil) then
+			player["money"] = player["money"] + money
+		end
+		if (reputation ~= nil) then
+			player["reputation"] = player["reputation"] + reputation
+		end
+		if (skills ~= nil) then
+			for index,item in pairs(skills) do
+				table.insert(player["skills"],item)
+			end
+		end
+		msg.post("main:/alexa", "halt")
+		msg.post("main:/alexa", "alexa",{song = "main", delay = 0.0})
+		monarch.show(hash("title-screen"))
+	elseif (status == game.RETURN_GOOD) then
+		if (reward ~= nil) then
+			for index,item in pairs(reward) do
+				table.insert(player["inventory"],item)
+			end
+		end
+		if (money ~= nil) then
+			player["money"] = player["money"] + money
+		end
+		if (reputation ~= nil) then
+			player["reputation"] = player["reputation"] + reputation
+		end
+		if (skills ~= nil) then
+			for index,item in pairs(skills) do
+				table.insert(player["skills"],item)
+			end
+		end
+		monarch.back()
+	elseif (status == game.PROCEED) then
+		if (reward ~= nil) then
+			for index,item in pairs(reward) do
+				table.insert(player["inventory"],item)
+			end
+		end
+		if (money ~= nil) then
+			player["money"] = player["money"] + money
+		end
+		if (reputation ~= nil) then
+			player["reputation"] = player["reputation"] + reputation
+		end
+		if (skills ~= nil) then
+			for index,item in pairs(skills) do
+				table.insert(player["skills"],item)
+			end
+		end
+		--monarch.show(hash("stage02"))
+	elseif (status == game.RETURN_FAIL) then
+		if (reward ~= nil) then
+			for index,item in pairs(reward) do
+				table.insert(player["inventory"],item)
+			end
+		end
+		if (money ~= nil) then
+			player["money"] = player["money"] + money
+		end
+		if (reputation ~= nil) then
+			player["reputation"] = player["reputation"] + reputation
+		end
+		if (skills ~= nil) then
+			for index,item in pairs(skills) do
+				table.insert(player["skills"],item)
+			end
+		end
+		monarch.back()
+	end
+end
+
+function game.play(name)
+	msg.post("main:/alexa", "halt")
+	msg.post("main:/alexa", "alexa", {song = name})
+end
+----------------------
+function run(script)
+	-- load script, wrap to coroutine
+	local code = sys.load_resource(script)
+	local f = assert(loadstring(code))
+	routine = coroutine.create(f)
+	-- execute script
+	coroutine.resume(routine)
+end
+
+function init(self)
+	-- Add initialization code here
+	msg.post("#narration", "enable")
+	msg.post("#one_speaker", "disable")
+	msg.post("#two_speaker", "disable")
+	msg.post("#mc", "disable")
+	--msg.post(".", "acquire_input_focus")
+	msg.post("main:/alexa", "halt")
+	run("/levels/stage01.lua")
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	if (message_id == setlh) then
+		msg.post("#"..layout, "disable")
+		msg.post("#"..message.id, "enable")
+		layout = message.id
+		if (message.bg ~= NULL) then
+			msg.post("#"..layout, "setbg", {bg = message.bg})
+		end
+		if (message.choices ~= NULL) then
+			msg.post("#"..layout, "setbtns", {choices = message.choices})
+		end
+	elseif (message_id == setth) then
+		if (message.speaker ~= nil) then
+			msg.post("#"..layout, "settxt"..message.speaker, {txt = message.txt})
+		else 
+			msg.post("#"..layout, "settxt", {txt = message.txt})
+		end
+	elseif (message_id == setsh) then
+		--[[if (message.texture ~= nil) then
+			msg.post("#"..layout, "sets"..message.speaker, {speaker = message.texture, id = message.id})
+		else ]]
+			msg.post("#"..layout, "sets", {speaker = message.speaker, id = message.id, sayer = message.sayer})
+		--end
+	elseif (message_id == listh) then
+		msg.post("#"..layout, "listen")
+	elseif (message_id == nexth) then
+		coroutine.resume(routine)
+	elseif (message_id == getoh) then
+		msg.post("#"..layout, "getOption")
+	elseif (message_id == retch) then
+		mc_choice = message.choice
+		coroutine.resume(routine)
+	end
+end

@@ -1,0 +1,24 @@
+images {
+  image: "/assets/gfx/backgrounds/dockyard.jpg"
+}
+images {
+  image: "/assets/gfx/backgrounds/street001.jpg"
+}
+images {
+  image: "/assets/gfx/backgrounds/street002.jpg"
+}
+images {
+  image: "/assets/gfx/backgrounds/street003.jpg"
+}
+images {
+  image: "/assets/gfx/backgrounds/street004.jpg"
+}
+images {
+  image: "/assets/gfx/backgrounds/street005.jpg"
+}
+images {
+  image: "/assets/gfx/backgrounds/teahouse2.jpg"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

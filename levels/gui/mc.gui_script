@@ -1,0 +1,76 @@
+local listening = nil
+local number_of_buttons = 0
+
+function init(self)
+	-- Add initialization code here
+	msg.post(".", "acquire_input_focus")
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	if (message_id == hash("setbg")) then
+		local bg = gui.get_node("bg")
+		if (message.bg == "nil") then
+			gui.set_color(bg, vmath.vector3(0,0,0))
+		else
+			gui.set_color(bg, vmath.vector3(128,128,128))
+			gui.set_texture(bg, "backgrounds")
+			gui.play_flipbook(bg, message.bg)
+		end
+	elseif (message_id == hash("sets")) then
+		local speaker = gui.get_node("speaker")
+		gui.set_texture(speaker, message.texture)
+	elseif (message_id == hash("settxt")) then
+		local text = gui.get_node("text")
+		gui.set_text(text, message.txt)
+	elseif (message_id == hash("getOption")) then
+		listening = sender
+	elseif (message_id == hash("setbtns")) then
+		node = gui.get_node("button0")
+		gui.set_enabled(node, true)
+		if (number_of_buttons ~= 0) then
+			local j = number_of_buttons
+			for i = 1,j do
+				button = gui.get_node("button"..i)
+				gui.set_enabled(button, false)
+			end
+		end
+		number_of_buttons = 0
+		for index, value in pairs(message.choices) do
+			clone = gui.clone_tree(node)
+			gui.set_id(clone["button0"], "button"..index)
+			gui.set_id(clone["text0"], "text"..index)
+			gui.set_layer(clone["button0"], "layer")
+			number_of_buttons = number_of_buttons + 1
+			--print("Copied for button",index,"text",value)
+		end
+		
+		for index, value in pairs(message.choices) do
+			button = gui.get_node("button"..index)
+			gui.set_enabled(button, true)
+			gui.set_position(button, vmath.vector3(480, (index)*640/(number_of_buttons+1),0))
+			gui.set_text(gui.get_node("text"..index), value)
+			--print("Button",index,"with text",value,"placed at",vmath.vector3(480, (index)*640/(number_of_buttons+1),0))
+		end
+		gui.set_position(node, vmath.vector3(1600,900,0))
+		--gui.set_enabled(node, false)
+		--gui.set_color(node, vmath.vector4(0,0,0,0))
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	local option = nil
+	if (action_id == hash("multitouch") or action_id == hash("touch")) and action.pressed then
+		for i = 1,(number_of_buttons) do
+			button = gui.get_node("button"..i)
+			--print("check button",i,"of",number_of_buttons)
+			if (gui.pick_node(button, action.x, action.y)) then
+				option = gui.get_text(gui.get_node("text"..i))
+			end
+		end
+		if (option ~= nil) then
+			msg.post(listening, "returnChoice", {choice = option})
+		end
+	end
+end

@@ -1,0 +1,27 @@
+images {
+  image: "/assets/gfx/chars/wunderbar/ingenieur0.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/ingenieur1.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/ingenieur2.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/ingenieur3.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/ingenieur4.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/ingenieur5.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/ingenieur6.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/ingenieur7.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

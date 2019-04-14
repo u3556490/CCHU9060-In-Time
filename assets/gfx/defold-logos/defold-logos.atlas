@@ -1,0 +1,75 @@
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-color-dark@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-color-light@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-color-white@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-horizontal-color-dark@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-horizontal-color-light@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-horizontal-color-white@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-horizontal-outline-dark@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-horizontal-outline-light@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-horizontal-outline-white@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-outline-dark@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-outline-light@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/defold-logo-outline-white@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-color-dark@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-color-light@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-color-white@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-horizontal-color-dark@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-horizontal-color-light@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-horizontal-color-white@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-horizontal-outline-dark@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-horizontal-outline-light@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-horizontal-outline-white@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-outline-dark@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-outline-light@2x.png"
+}
+images {
+  image: "/assets/gfx/defold-logos/PNG/mwdefold-logo-outline-white@2x.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

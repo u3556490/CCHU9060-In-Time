@@ -1,0 +1,70 @@
+local lengths = {
+	["arpeggios1"] = 48.0185,
+	["hkblues2"] = 52.3568,
+	["hk2step"] = 56.3405,
+	["credits"] = 110.2787,
+	["main"] = 32.0140,
+	["main-intro"] = 14.512925,
+	["main-waiting"] = 6.0115,
+	["win"] = 6.000,
+	["lose"] = 5.000
+}
+local play_queue = {}
+local now_playing = ""
+local url = ""
+local timer_set = false
+local bgm_gain = 0.7
+local timer_id = nil
+
+local function enqueue(id)
+	table.insert(play_queue, id)
+end
+
+local function dequeue()
+	if (play_queue[1] ~= nil) then
+		return play_queue[1]
+	else
+		return nil
+	end
+end
+
+local function requeue()
+	play_queue = {}
+end
+
+local function set_state(self, id)
+	print("Song completed according to schedule! Just now played:"..now_playing)
+	timer_set = false	
+	if (url ~= "") then
+		msg.post(url, "music_done")
+		url = ""
+	end
+	
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	if (message_id == hash("alexa")) then
+		msg.post("#"..message.song, "play_sound", { gain = bgm_gain, delay = message.delay })
+		now_playing = message.song
+		if (not timer_set) then
+			timer_set = true
+			timer_id = timer.delay(lengths[message.song], true, set_state)
+		else
+			timer_set = true
+			timer.cancel(timer_id)
+			timer_id = timer.delay(lengths[message.song], true, set_state)
+		end
+		print("switched to song:"..now_playing)
+	elseif (message_id == hash("halt")) then
+		msg.post("#"..now_playing, "stop_sound")
+		print("sound stop! just played:"..now_playing)
+		now_playing = ""
+		timer.cancel(timer_id)
+		timer_set = false
+	elseif (message_id == hash("what_song")) then
+		msg.post(sender, "now_playing", {value = now_playing})
+	elseif (message_id == hash("notify_end")) then
+		url = message.url
+	end
+end

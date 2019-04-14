@@ -1,0 +1,41 @@
+local listening = nil
+
+function init(self)
+	-- Add initialization code here
+	msg.post(".", "acquire_input_focus")
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	if (message_id == hash("setbg")) then
+		local bg = gui.get_node("bg")
+		if (message.bg == "nil") then
+			gui.set_color(bg, vmath.vector3(0,0,0))
+		else
+			gui.set_color(bg, vmath.vector3(128,128,128))
+			gui.set_texture(bg, "backgrounds")
+			gui.play_flipbook(bg, message.bg)
+		end
+	elseif (message_id == hash("sets")) then
+		local speaker = gui.get_node("speaker")
+		gui.set_texture(speaker, message.speaker)
+		gui.play_flipbook(speaker, message.id)
+		local sayer = gui.get_node("sayer")
+		gui.set_text(sayer, message.sayer)
+	elseif (message_id == hash("settxt")) then
+		local text = gui.get_node("text")
+		gui.set_text(text, message.txt)
+	elseif (message_id == hash("listen")) then
+		listening = sender
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	if (action_id == hash("multitouch") or action_id == hash("touch")) and action.pressed then
+		local continue = gui.get_node("speech")
+		if (gui.pick_node(continue, action.x, action.y)) then
+			msg.post(listening, "next")
+		end
+	end
+end

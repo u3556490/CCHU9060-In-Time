@@ -1,0 +1,45 @@
+local listening = nil
+
+function init(self)
+	-- Add initialization code here
+	msg.post(".", "acquire_input_focus")
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	if (message_id == hash("setbg")) then
+		local bg = gui.get_node("bg")
+		if (message.bg == "nil") then
+			gui.set_color(bg, vmath.vector3(0,0,0))
+		else
+			gui.set_color(bg, vmath.vector3(128,128,128))
+			gui.set_texture(bg, "backgrounds")
+			gui.play_flipbook(bg, message.bg)
+		end
+	elseif (message_id == hash("sets1")) then
+		local speaker = gui.get_node("speaker1")
+		gui.set_texture(speaker, message.texture)
+	elseif (message_id == hash("sets2")) then
+		local speaker = gui.get_node("speaker2")
+		gui.set_texture(speaker, message.texture)
+	elseif (message_id == hash("settxt1")) then
+		local text = gui.get_node("speechtext1")
+		gui.set_text(text, message.txt)
+	elseif (message_id == hash("settxt2")) then
+		local text = gui.get_node("speechtext2")
+		gui.set_text(text, message.txt)
+	elseif (message_id == hash("listen")) then
+		listening = sender
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	if (action_id == hash("multitouch") or action_id == hash("touch")) and action.pressed then
+		local continue1 = gui.get_node("speech1")
+		local continue2 = gui.get_node("speech2")
+		if (gui.pick_node(continue1, action.x, action.y) or gui.pick_node(continue2, action.x, action.y)) then
+			msg.post(listening, "next")
+		end
+	end
+end
