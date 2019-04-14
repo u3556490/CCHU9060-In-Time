@@ -3,14 +3,14 @@ local option = nil
 local proceed = false
 game.play("hk2step")
 game.setLayout("narration", {bg = "teahouse2"})
-
+--Revert some return_to_title's to return_fail or return_good
 --Anfang
 game.say("You arrive at the tea house. The gangster is already there.")
 game.setLayout("one_speaker", {bg = "teahouse2"})
 game.setSpeaker("gangster1","gangster12", "Gangster")
 game.say("\"Oh, you're already here! What's your name?\"")
 game.setSpeaker("protagonist","protagonist2", player.name)
-game.say(player["name"])
+game.say("\""..player["name"]..".\"")
 game.setSpeaker("gangster1","gangster12", "Gangster")
 game.say("Good. Before I welcome you to the anti-Japanese effort, I advise you join our gang first.")
 game.setLayout("mc", {bg = "teahouse2", choices = {"Why not?", "No thanks."}})
@@ -19,7 +19,7 @@ if (option == "No thanks.") then
 	game.setLayout("narration", {bg = "teahouse2"})
 	game.play("lose")
 	game.say("You chose not to.\nYou were rejected from the gang.")
-	game.done(game.RETURN_FAIL)
+	game.done(game.RETURN_TO_TITLE)
 elseif (option == "Why not?") then
 	game.setLayout("one_speaker", {bg = "teahouse2"})
 	game.setSpeaker("gangster1","gangster12", "Gangster")
@@ -101,7 +101,7 @@ elseif (option == "Crescent Blade") then
 	game.say("You wanted to commit suicide so much you had to give up the mission.")
 	game.play("lose")
 	game.say("~~ You screwed up. ~~\nReward: money -10")
-	game.done(game.RETURN_FAIL, -10)
+	game.done(game.RETURN_TO_TITLE, -10)
 end
 --
 local obj_get_0 = option
@@ -255,12 +255,12 @@ function resolve_success()
 	game.play("win")
 	game.setLayout("narration", {bg = nil})
 	game.say("~~ Mission successful ~~")
-	game.setLayout("mc", {bg = "nil", choices = {"Return", "Proceed to Stage 2"}})
+	game.setLayout("mc", {bg = "nil", choices = {"Return", "Proceed to Stage 2 (N/A)"}})
 	option = game.getOption()
 	if (option == "Return") then
 		--game.done(game.RETURN_GOOD, 100)
 		game.done(game.RETURN_TO_TITLE, reward.money, reward.items, reward.reputation, reward.skills)
-	elseif (option == "Proceed to Stage 2") then
+	elseif (option == "Proceed to Stage 2 (N/A)") then
 		--game.done(game.PROCEED, 100)
 		print("N/A")
 	end
@@ -279,8 +279,7 @@ function look_comrade()
 		game.setLayout("one_speaker", {bg = "dockyard"})
 		game.setSpeaker("protagonist","protagonist2", player.name)
 		game.say("\"Excuse me, manager?\"")
-		--game.setSpeaker("manager","???", "Manager")
-		game.setSpeaker("engineer","ingenieur3", "Manager")
+		game.setSpeaker("manager","manager13", "Manager")
 		game.say("\"Omae Nani wo Shideiru? Hattarake!\"\n(What are you doing? Go back to work!)")
 		game.setLayout("narration", {bg = "dockyard"})
 		game.say("You can't ask. You just can't.")
@@ -289,7 +288,7 @@ function look_comrade()
 		game.say("You tried to attract the worker's attention by dancing.")
 		game.say("Your moves were so astounding that the workers stopped their work.")
 		game.setLayout("one_speaker", {bg = "dockyard"})
-		--game.setSpeaker("worker","???", "Worker")
+		game.setSpeaker("worker2","worker20", "Worker")
 		game.setSpeaker("protagonist","protagonist2", player.name)
 		game.say("\"His moves must come from hell!\"")
 		game.say("(Hellshake! Hellshake! Hellshake!...)")	--AC-bu
@@ -316,13 +315,11 @@ function look_comrade()
 		game.say("Could he be your comrade?")
 		game.say("You walked near him and tapped his shoulder three times.")
 		game.setLayout("one_speaker", {bg = "dockyard"})
-		--game.setSpeaker("comrade","????", "???")
-		game.setSpeaker("gangster2","gangster25","???")
+		game.setSpeaker("comrade","comrade0", "???")
 		game.say("\"Let's plant the tree together...\"")
 		game.setSpeaker("protagonist","protagonist1", player.name)
 		game.say("\"for the grave of the Fascists.\"")
-		--game.setSpeaker("comrade","????", "Comrade")
-		game.setSpeaker("gangster2","gangster22","Comrade")
+		game.setSpeaker("comrade","comrade2", "Comrade")
 		game.say("\"Ah, comrade! Good time seeing you!\"")
 		game.say("\"Let me tell you about the situations of this dockyard!\"")
 		game.say("\"..... ..... .....\"")
@@ -336,22 +333,25 @@ function persuade_worker()
 	local round = 1
 	local NUMBER_OF_ROUNDS = 5
 	local NUMBER_OF_OPT = 4
-	math.randomseed(1245399200)
-
+	math.randomseed(os.time())
+	math.random()
+	math.random()
+	math.random()
+	
 	game.setLayout("narration", {bg = "dockyard"})
 	game.say("You see a random ship mechanic.\nYou proceed to approach him.")
 	game.setLayout("one_speaker", {bg = "dockyard"})
 	game.setSpeaker("protagonist","protagonist2", player.name)
 	game.say("\"Good day, mate!\"")
-	--game.setSpeaker("worker","????", "Worker")
+	game.setSpeaker("worker1","worker11", "Worker")
 	game.say("\"Good day.\"")
 	game.setSpeaker("protagonist","protagonist2", player.name)
 	game.say("*whisper* \"Do you like the Japanese?\"")
-	--game.setSpeaker("worker","????", "Worker")
+	game.setSpeaker("worker1","worker11", "Worker")
 	game.say("\"Are you testing me?......of course not.\"")
 	game.setSpeaker("protagonist","protagonist4", player.name)
 	game.say("\"Have you ever imagined to do something against them?\"")
-	--game.setSpeaker("worker","????", "Worker")
+	game.setSpeaker("worker1","worker11", "Worker")
 	game.say("\"Uhhhhhhhhh\"")
 	game.setSpeaker("protagonist","protagonist4", player.name)
 	game.say("\"Such as undermining their effort at Tai Koo?\"")
@@ -368,7 +368,7 @@ function persuade_worker()
 			"I don't have a Reason to do so."
 		}
 		local told = responses[math.random(#responses)]
-		--game.setSpeaker("worker","????", "Worker")
+		game.setSpeaker("worker1","worker11", "Worker")
 		game.say("\""..told.."\"")
 		game.setLayout("narration", {bg = "dockyard"})
 		game.say("Attempt "..round.." to convince worker.\nYou have "..(NUMBER_OF_ROUNDS-round).." attempts left.")
@@ -396,7 +396,7 @@ function persuade_worker()
 		game.say("You said: "..option)
 		--switch answer
 		if option == sayings[9] then	--last one
-			--game.setSpeaker("worker","????", "Worker")
+			game.setSpeaker("worker1","worker12", "Worker")
 			game.say("Are you threatening me? Hell no!")
 			game.say("I refuse to work for you!")
 			game.setSpeaker("protagonist","protagonist7", player.name)
@@ -435,7 +435,7 @@ function persuade_worker()
 	--evaluate success
 	if (persuasion >= 1) then
 		game.setLayout("one_speaker", {bg = "dockyard"})
-		--game.setSpeaker("worker","????", "Worker")
+		game.setSpeaker("worker1","worker11", "Worker")
 		game.say("\"Fine. I will do it for you then.\"")
 		game.setSpeaker("protagonist","protagonist2", player.name)
 		game.say("\"Thank you very much!\"")
@@ -460,7 +460,7 @@ function persuade_worker()
 end
 
 function persuade_engineer()
-	--player.reputation = 31
+	player.reputation = 31
 	if player.reputation < 30 then
 		--wont work 
 		game.setLayout("one_speaker", {bg = "dockyard"})
@@ -472,7 +472,10 @@ function persuade_engineer()
 		local round = 1
 		local NUMBER_OF_ROUNDS = 5
 		local NUMBER_OF_OPT = 3
-		math.randomseed(868982323)
+		math.randomseed(os.time())
+		math.random()
+		math.random()
+		math.random()
 
 		game.setLayout("one_speaker", {bg = "dockyard"})
 		game.setSpeaker("engineer","ingenieur5", "Engineer")
@@ -604,18 +607,18 @@ while (not proceed) do
 	elseif (option == "Seek workers") then
 		proceed = true
 		persuade_worker()
+		game.setLayout("narration", {bg = "dockyard"})
+		game.say("You see a Japanese engineer. Do you attempt to talk to him?")
+		game.setLayout("mc", {bg = "dockyard", choices = { "Let's try", "Better not"}})
+		option = game.getOption()
+		if (option == "Let's try") then
+			persuade_engineer()
+			resolve_success()
+		elseif (option == "Better not") then
+			resolve_success()
+		end
 	elseif (option == "Escape") then
 		proceed = true
 		resolve_fail()
 	end
-end
-game.setLayout("narration", {bg = "dockyard"})
-game.say("You see a Japanese engineer. Do you attempt to talk to him?")
-game.setLayout("mc", {bg = "dockyard", choices = { "Let's try", "Better not"}})
-option = game.getOption()
-if (option == "Let's try") then
-	persuade_engineer()
-	resolve_success()
-elseif (option == "Better not") then
-	resolve_success()
 end

@@ -1,0 +1,27 @@
+images {
+  image: "/assets/gfx/chars/wunderbar/manager10.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/manager11.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/manager12.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/manager13.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/manager14.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/manager15.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/manager16.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/manager17.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

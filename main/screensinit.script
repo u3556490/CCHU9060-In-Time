@@ -2,12 +2,12 @@ local monarch = require "monarch.monarch"
 
 function init(self)
 	-- Add initialization code here
-	msg.post("#", "bereits")
+	msg.post("#", "init_monarch")
 end
 
 function on_message(self, message_id, message, sender)
 	-- Add message-handling code here
-	if (message_id == hash("bereits")) then
+	if (message_id == hash("init_monarch")) then
 		monarch.show(hash("title-screen"), {clear = true})
 		--msg.post("main:/alexa", "main-intro")
 	end

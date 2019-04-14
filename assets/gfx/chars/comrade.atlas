@@ -1,0 +1,27 @@
+images {
+  image: "/assets/gfx/chars/wunderbar/comrade0.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/comrade1.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/comrade2.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/comrade3.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/comrade4.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/comrade5.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/comrade6.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/comrade7.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

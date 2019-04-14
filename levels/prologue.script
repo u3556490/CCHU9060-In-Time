@@ -59,7 +59,7 @@ function game.getPlayer()
 end
 
 function game.done(status, money, reward, reputation)
-	--coroutine.yield()
+	coroutine.yield()
 	if (status == game.RETURN_TO_TITLE) then
 		monarch.show(hash("title-screen"))
 	elseif (status == game.RETURN_GOOD) then
@@ -92,7 +92,7 @@ function game.done(status, money, reward, reputation)
 		end
 		table.insert(player.completed, "prologue")
 		--monarch.hide(hash("prologue"))
-		monarch.show(hash("stage01")) --not yet
+		monarch.show(hash("stage01"), {no_stack = true})
 	elseif (status == game.RETURN_FAIL) then
 		if (reward ~= nil) then
 			for index,item in pairs(reward) do

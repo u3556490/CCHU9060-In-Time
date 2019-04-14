@@ -15,6 +15,7 @@ local url = ""
 local timer_set = false
 local bgm_gain = 0.7
 local timer_id = nil
+go.property("test", 0)
 
 local function enqueue(id)
 	table.insert(play_queue, id)
@@ -33,7 +34,7 @@ local function requeue()
 end
 
 local function set_state(self, id)
-	print("Song completed according to schedule! Just now played:"..now_playing)
+	print("Alexa: Song completed according to timer. Just now played: "..now_playing)
 	timer_set = false	
 	if (url ~= "") then
 		msg.post(url, "music_done")
@@ -55,10 +56,10 @@ function on_message(self, message_id, message, sender)
 			timer.cancel(timer_id)
 			timer_id = timer.delay(lengths[message.song], true, set_state)
 		end
-		print("switched to song:"..now_playing)
+		print("Alexa: switched to song: "..now_playing)
 	elseif (message_id == hash("halt")) then
 		msg.post("#"..now_playing, "stop_sound")
-		print("sound stop! just played:"..now_playing)
+		print("Alexa: sound stop. just played: "..now_playing)
 		now_playing = ""
 		timer.cancel(timer_id)
 		timer_set = false

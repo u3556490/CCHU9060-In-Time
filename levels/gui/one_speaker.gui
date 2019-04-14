@@ -27,6 +27,22 @@ textures {
   name: "protagonist"
   texture: "/assets/gfx/chars/protagonist.atlas"
 }
+textures {
+  name: "comrade"
+  texture: "/assets/gfx/chars/comrade.atlas"
+}
+textures {
+  name: "manager"
+  texture: "/assets/gfx/chars/manager.atlas"
+}
+textures {
+  name: "worker1"
+  texture: "/assets/gfx/chars/worker1.atlas"
+}
+textures {
+  name: "worker2"
+  texture: "/assets/gfx/chars/worker2.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0

@@ -1,0 +1,12 @@
+images {
+  image: "/assets/gfx/chars/wunderbar/worker20.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/worker21.png"
+}
+images {
+  image: "/assets/gfx/chars/wunderbar/worker22.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0
