@@ -1,7 +1,19 @@
 # In Time (Prototype): Readme
 ## HKU Common Core CCHU9060 Project Group 11 "Software on Demand"
-A game for the Android platform (ultimately) about the city of Hong Kong after December 1941. This is a prototype made with Defold.
+A game for the Android platform (ultimately) about the city of Hong Kong after December 1941. This is a prototype made with Defold. Additionally, a concept scene of side scrolling shooter have been made using scratch.
 
+####  Scratch Concept Side Scrolling Shooter Scenes
+  link: https://scratch.mit.edu/projects/302584793/  
+  
+  Description:
+  Side Scrolling Shooter is one of the scenes of the game. The game itself contains other elements such as persuasion, puzzle, detective... elements to help telling the story of the protagonist.  
+  
+  Instructions:  
+  * Press W/A/S/D to walk  
+  * Press Spacebar to shoot  
+  * Go to the Star to escape  
+  * Kill all the Japanese soldiers to win  
+ 
 ## Section 1: Installation Guide
 ---
   The installation files are located in the source folder at _/test_build_. For the Android version, the APK is located at _/test_build/armv7-android/In Time_. For the Windows version, which is guaranteed to be able to work, is at _/test_build/x86_64-win32/In Time._
@@ -58,6 +70,8 @@ if any, before installing/updating the app.
   
   If the persuasion score is >= 100%, the attempt is a success and the player's reward will be greater. Otherwise, only the base reward is given. The item "worker clothes" and success in finding the comrade increases the score by 0.1 (10%) each.  
   Upon successfully passing the 1st stage, the player may continue (which is not available) or return.  
+ 
+  
 
 #### Common QnA
 
