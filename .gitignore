@@ -1,5 +1,6 @@
 /.internal
-/build
+/build/default
+/build/x86_64-win32
 .externalToolBuilders
 .DS_Store
 Thumbs.db

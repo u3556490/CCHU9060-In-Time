@@ -13,7 +13,7 @@ update_frequency = 60
 
 [project]
 title = In Time
-version = 0.1
+version = 0.2
 write_log = 1
 compress_archive = 1
 dependencies = https://github.com/rgrams/rendercam/archive/v1.0.1.zip,https://github.com/britzl/defold-timer/archive/master.zip,https://github.com/britzl/monarch/archive/master.zip,https://github.com/britzl/gooey/archive/master.zip
@@ -25,7 +25,7 @@ bundle_exclude_resources =
 use_accelerometer = 0
 
 [android]
-package = com.softwareod.group11
+package = com.sodgroup11.debug
 debuggable = 1
 input_method = HiddenInputField
 

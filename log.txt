@@ -2,6 +2,8 @@ INFO:DLIB: Writing log to: ./log.txt
 INFO:ENGINE: Loading data from: build/default
 INFO:ENGINE: Initialised sound device 'default'
 
+DEBUG:SCRIPT: Listening for debugger on 0.0.0.0
+DEBUG:SCRIPT: Debugger connected from 127.0.0.1
 INFO:DLIB: SSDP: Started on address 192.168.1.105
 DEBUG:SCRIPT: Alexa: sound stop. just played: 
 ERROR:SCRIPT: /main/alexa.script:64: bad argument #1 to 'cancel' (number expected, got nil)
@@ -9,5 +11,12 @@ stack traceback:
 	[C]: in function 'cancel'
 	/main/alexa.script:64: in function </main/alexa.script:46>
 DEBUG:SCRIPT: Alexa: switched to song: main
-DEBUG:SCRIPT: SYS: game exits with code zero
+DEBUG:SCRIPT: SYS & GUI: Title screen: load game call
+DEBUG:SCRIPT: Alexa: sound stop. just played: main
+DEBUG:SCRIPT: Alexa: sound stop. just played: 
+DEBUG:SCRIPT: Alexa: switched to song: hk2step
+DEBUG:SCRIPT: Alexa: sound stop. just played: hk2step
+DEBUG:SCRIPT: Alexa: switched to song: lose
+DEBUG:SCRIPT: Alexa: sound stop. just played: lose
+DEBUG:SCRIPT: Alexa: switched to song: main
 INFO:DLIB: SSDP: Done on address 192.168.1.105
