@@ -7,7 +7,8 @@ A game for the Android platform (ultimately) about the city of Hong Kong after D
   The installation files are located in the source folder at _/test_build_. For the Android version, the APK is located at _/test_build/armv7-android/In Time_. For the Windows version, which is guaranteed to be able to work, is at _/test_build/x86_64-win32/In Time._
 
 ### Android
-  > Note that it is **a must** to uninstall the old version of the app, if any, before installing/updating the app.  
+  > Note that it is recommended to uninstall the old version of the app, 
+if any, before installing/updating the app.  
 
   The app is installed via the APK directly. The log files of the game are saved at _/storage/emulated/0/Android/data/com.sodgroup11.debug/files/log.txt_ in the Android file system. To start the game, tap the icon of it in your apps list.
 ### Windows (64 bit, x86-64)
@@ -105,8 +106,11 @@ A: Nein, leider nicht.
     - screeninit.script : The script to initialize the screens and their handler.  
     - certificate.pem   : The certificate used to sign the Android bundle.  
     - key.pk8           : See above  
+    - CCHU9060.decrepated.zip : a file holding the things we discarded.
     
-  One should be fully aware that the game's programming turned into a haste in the final two weeks and hence the codes are not optimized nor commented.
+  One should be fully aware that the game's programming turned into a 
+haste in the final two weeks and hence the codes are not 
+performance optimized nor commented.
 
 #### Known Issues
 
