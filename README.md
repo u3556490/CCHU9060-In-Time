@@ -114,6 +114,10 @@ performance optimized nor commented.
 
 #### Known Issues
 
+1. Slow response on screen changing. Sometimes a second click is needed to have it respond.
+
+2. On Android some lines and MCs are skipped. At some point the game then hangs.
+
 ## Section 4: Credits
 ---
 Game engine: Defold  
