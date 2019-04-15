@@ -33,11 +33,13 @@ end
 function game.say(str)
 	msg.post(".", "setText", {txt = str})
 	msg.post(".", "listenNext")
+	print("GAME: Prologue Say:",str)
 	coroutine.yield()
 end
 
 function game.setLayout(name, options)
 	msg.post(".", "setLayout", {id = name, bg = options.bg, choices = options.choices})
+	print("GAME: Prologue Set Layout:",name)
 end
 
 function game.setSpeaker(a, b, c)
@@ -45,6 +47,7 @@ function game.setSpeaker(a, b, c)
 		msg.post(".", "setSpeaker", {speaker = a, id = b, texture = c})
 	else]]
 		msg.post(".", "setSpeaker", {speaker = a, id = b, sayer = c})
+		print("GAME: Prologue Set Speaker:",a)
 	--end
 end
 
@@ -61,51 +64,79 @@ end
 function game.done(status, money, reward, reputation)
 	coroutine.yield()
 	if (status == game.RETURN_TO_TITLE) then
-		monarch.show(hash("title-screen"))
+		local s = monarch.show(hash("title-screen"))
+		if (s) then
+			print("GUI: Return to title successful at Prologue")
+		else
+			print("GUI: Return to title failed at Prologue")
+		end
 	elseif (status == game.RETURN_GOOD) then
 		if (reward ~= nil) then
 			for index,item in pairs(reward) do
 				table.insert(player["inventory"],item)
+				print("GAME: Insert item to inventory:",item.id)
 			end
 		end
 		if (money ~= nil) then
 			player["money"] = player["money"] + money
+			print("GAME: Money added for player:",money)
 		end
 		if (reputation ~= nil) then
 			player["reputation"] = player["reputation"] + reputation
+			print("GAME: Reputation added for player:",reputation)
 		end
 		table.insert(player.completed, "prologue")
 		msg.post("main:/alexa", "halt")
 		msg.post("main:/alexa", "alexa",{song = "main", delay = 0.0})
-		monarch.back()
+		local s = monarch.back()
+		if (s) then
+			print("GUI: Return (victory) successful at Prologue")
+		else
+			print("GUI: Return (victory) failed at Prologue")
+		end
 	elseif (status == game.PROCEED) then
 		if (reward ~= nil) then
 			for index,item in pairs(reward) do
 				table.insert(player["inventory"],item)
+				print("GAME: Insert item to inventory:",item.id)
 			end
 		end
 		if (money ~= nil) then
 			player["money"] = player["money"] + money
+			print("GAME: Money added for player:",money)
 		end
 		if (reputation ~= nil) then
 			player["reputation"] = player["reputation"] + reputation
+			print("GAME: Reputation added for player:",reputation)
 		end
 		table.insert(player.completed, "prologue")
-		--monarch.hide(hash("prologue"))
-		monarch.show(hash("stage01"), {no_stack = true})
+		local s = monarch.show(hash("stage01"))
+		if (s) then
+			print("GUI: Proceed to Stage 01 successful at Prologue")
+		else
+			print("GUI: Proceed to Stage 01 failed at Prologue")
+		end
 	elseif (status == game.RETURN_FAIL) then
 		if (reward ~= nil) then
 			for index,item in pairs(reward) do
 				table.insert(player["inventory"],item)
+				print("GAME: Insert item to inventory:",item.id)
 			end
 		end
 		if (money ~= nil) then
 			player["money"] = player["money"] + money
+			print("GAME: Money added for player:",money)
 		end
 		if (reputation ~= nil) then
 			player["reputation"] = player["reputation"] + reputation
+			print("GAME: Reputation added for player:",reputation)
 		end
-		monarch.back()
+		local s = monarch.back()
+		if (s) then
+			print("GUI: Return (defeat) successful at Prologue")
+		else
+			print("GUI: Return (defeat) failed at Prologue")
+		end
 	end
 end
 
@@ -120,6 +151,7 @@ function run(script)
 	local f = assert(loadstring(code))
 	routine = coroutine.create(f)
 	-- execute script
+	print("SYS: Executing :",script)
 	coroutine.resume(routine)
 end
 
@@ -158,6 +190,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("#"..layout, "getOption")
 	elseif (message_id == retch) then
 		mc_choice = message.choice
+		print("GAME: Prologue user option chose:",mc_choice)
 		coroutine.resume(routine)
 	end
 end

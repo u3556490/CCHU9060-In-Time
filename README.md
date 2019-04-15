@@ -4,7 +4,7 @@ A game for the Android platform (ultimately) about the city of Hong Kong after D
 
 ## Section 1: Installation Guide
 ---
-  The installation files are located in the source folder at /build/test_build. For the Android version, the APK is located at _"/build/test_build/armv7-android/In Time"_. For the Windows version, which is guaranteed to be able to work, is at _"/build/test_build/x86_64-win32/In Time"._
+  The installation files are located in the source folder at _/test_build_. For the Android version, the APK is located at _/test_build/armv7-android/In Time_. For the Windows version, which is guaranteed to be able to work, is at _/test_build/x86_64-win32/In Time._
 
 ### Android
   > Note that it is **a must** to uninstall the old version of the app, if any, before installing/updating the app.  

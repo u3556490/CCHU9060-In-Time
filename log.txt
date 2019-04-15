@@ -4,19 +4,119 @@ INFO:ENGINE: Initialised sound device 'default'
 
 DEBUG:SCRIPT: Listening for debugger on 0.0.0.0
 DEBUG:SCRIPT: Debugger connected from 127.0.0.1
-INFO:DLIB: SSDP: Started on address 192.168.1.105
+INFO:DLIB: SSDP: Started on address 10.64.223.224
 DEBUG:SCRIPT: Alexa: sound stop. just played: 
 ERROR:SCRIPT: /main/alexa.script:64: bad argument #1 to 'cancel' (number expected, got nil)
 stack traceback:
 	[C]: in function 'cancel'
 	/main/alexa.script:64: in function </main/alexa.script:46>
 DEBUG:SCRIPT: Alexa: switched to song: main
-DEBUG:SCRIPT: SYS & GUI: Title screen: load game call
+DEBUG:SCRIPT: SYS & GUI: Title screen: new game call
+DEBUG:SCRIPT: SYS: Executing :	/levels/prologue.lua
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	narration
+DEBUG:SCRIPT: GAME: Prologue Say:	The year was 1941.
 DEBUG:SCRIPT: Alexa: sound stop. just played: main
 DEBUG:SCRIPT: Alexa: sound stop. just played: 
+DEBUG:SCRIPT: Alexa: switched to song: arpeggios1
+DEBUG:SCRIPT: GAME: Prologue Say:	The Japanese had arrived: A brutal herd from across the Shum Chun River.
+DEBUG:SCRIPT: GAME: Prologue Say:	They took our formidable bunkers and mighty batteries.
+DEBUG:SCRIPT: GAME: Prologue Say:	We had a heroic fortnight, but now it's over.
+DEBUG:SCRIPT: GAME: Prologue Say:	They killed our men and raped our women.
+DEBUG:SCRIPT: GAME: Prologue Say:	Many were jailed in concentration camps.
+DEBUG:SCRIPT: GAME: Prologue Say:	They deported people and took our money away.
+DEBUG:SCRIPT: GAME: Prologue Say:	Tyranny skyrocketed. Hong Kong was ruined.
+DEBUG:SCRIPT: GAME: Prologue Say:	People hoped to remove the fascist occupants from Hong Kong, or at least prevent them from living comfortably.
+DEBUG:SCRIPT: GAME: Prologue Say:	That was no easy task.
+DEBUG:SCRIPT: GAME: Prologue Say:	They had no Killer Machines.
+DEBUG:SCRIPT: GAME: Prologue Say:	They could not wipe out the thousands of fascists overnight. They lacked weapons and personnel to revolt, even food began to run short.
+DEBUG:SCRIPT: GAME: Prologue Say:	Hope dwindled as tyranny intensified.
+DEBUG:SCRIPT: GAME: Prologue Say:	Maybe there were secret projects underway to do so anyway.
+DEBUG:SCRIPT: GAME: Prologue Say:	Covert operations to liberate the citizens from the tyranny!
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	narration
+DEBUG:SCRIPT: GAME: Prologue Say:	It was Spring of 1942.
+DEBUG:SCRIPT: Alexa: sound stop. just played: arpeggios1
 DEBUG:SCRIPT: Alexa: switched to song: hk2step
+DEBUG:SCRIPT: GAME: Prologue Say:	You used to be a messenger delivering telegrams around the city.
+DEBUG:SCRIPT: GAME: Prologue Say:	You naturally lost your job as the city 'welcomed' its new owners.
+DEBUG:SCRIPT: GAME: Prologue Say:	One day, you were at a tea house. It was a luxury. The guys sitting behind you seemed to be gangsters. You overheard them speaking:
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	one_speaker
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Prologue Say:	"Have you heard that the Brits are looking for collaborators here?"
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster2
+DEBUG:SCRIPT: GAME: Prologue Say:	"Here in Hong Kong? Don't know. The fascists are looking for them, it is all I know."
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Prologue Say:	"Dumb head. We've already signed up for it, cause, y'know, down with the Japanese!"
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster2
+DEBUG:SCRIPT: GAME: Prologue Say:	"I will never forgive the Japanese! They took my daughter away and I never see her ever again till now!"
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Prologue Say:	"......Then we better start doing something for the Brits."
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster2
+DEBUG:SCRIPT: GAME: Prologue Say:	"Hold up, someone's sittin' behind you. Don't speak up."
+"Huh?"
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	narration
+DEBUG:SCRIPT: GAME: Prologue Say:	A bad boi tapped your back. You turned around.
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	one_speaker
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Prologue Say:	"You didn't hear what we just said, did you?"
+"......"
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	mc
+DEBUG:SCRIPT: GAME: Prologue user option chose:	I did.
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	one_speaker
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Prologue Say:	"You've got some balls, huh."
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Prologue Say:	"Then, to get away, you better help us do something. Yes or no?"
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	mc
+DEBUG:SCRIPT: GAME: Prologue user option chose:	Sure.
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	one_speaker
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Prologue Say:	"......What's your occupation?"
+"I used to deliver telegrams."
+DEBUG:SCRIPT: GAME: Prologue Say:	".......Brilliant. We need one. Are you free Saturday morning?"
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	protagonist
+DEBUG:SCRIPT: GAME: Prologue Say:	"Yes?"
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Prologue Say:	"See me at this tea house, at ten sharp."
+DEBUG:SCRIPT: GAME: Prologue Set Speaker:	protagonist
+DEBUG:SCRIPT: GAME: Prologue Say:	"Aye aye, captain."
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	narration
+DEBUG:SCRIPT: GAME: Prologue Say:	~~ Prologue complete. ~~
+Reward: Money $100
+DEBUG:SCRIPT: Alexa: sound stop. just played: hk2step
+DEBUG:SCRIPT: Alexa: switched to song: win
+DEBUG:SCRIPT: GAME: Prologue Set Layout:	mc
+DEBUG:SCRIPT: GAME: Prologue user option chose:	Proceed to Stage 1
+DEBUG:SCRIPT: GAME: Prologue user option chose:	Proceed to Stage 1
+DEBUG:SCRIPT: GAME: Money added for player:	100
+DEBUG:SCRIPT: GUI: Proceed to Stage 01 successful at Prologue
+DEBUG:SCRIPT: Alexa: Song completed according to timer. Just now played: win
+DEBUG:SCRIPT: SYS: Executing :	/levels/stage01.lua
+DEBUG:SCRIPT: GAME: Stage 01 Set Layout:	narration
+DEBUG:SCRIPT: GAME: Stage 01 Say:	You arrive at the tea house. The gangster is already there.
+DEBUG:SCRIPT: Alexa: sound stop. just played: win
+DEBUG:SCRIPT: Alexa: sound stop. just played: 
+DEBUG:SCRIPT: Alexa: switched to song: hk2step
+DEBUG:SCRIPT: GAME: Stage 01 Set Layout:	one_speaker
+DEBUG:SCRIPT: GAME: Stage 01 Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Stage 01 Say:	"Oh, you're already here! What's your name?"
+DEBUG:SCRIPT: GAME: Stage 01 Set Speaker:	protagonist
+DEBUG:SCRIPT: GAME: Stage 01 Say:	"George."
+DEBUG:SCRIPT: GAME: Stage 01 Set Speaker:	gangster1
+DEBUG:SCRIPT: GAME: Stage 01 Say:	Good. Before I welcome you to the anti-Japanese effort, I advise you join our gang first.
+DEBUG:SCRIPT: GAME: Stage 01 Set Layout:	mc
+DEBUG:SCRIPT: GAME: Stage 01 user option chose:	No thanks.
+DEBUG:SCRIPT: GAME: Stage 01 Set Layout:	narration
+DEBUG:SCRIPT: GAME: Stage 01 Say:	You chose not to.
+You were rejected from the gang.
 DEBUG:SCRIPT: Alexa: sound stop. just played: hk2step
 DEBUG:SCRIPT: Alexa: switched to song: lose
+DEBUG:SCRIPT: GUI: Return to title successful at stage01
+DEBUG:SCRIPT: GAME: Stage 01 Set Layout:	narration
+DEBUG:SCRIPT: GAME: Stage 01 Say:	Later that day u joined the gang at their secret meeting hall.
 DEBUG:SCRIPT: Alexa: sound stop. just played: lose
 DEBUG:SCRIPT: Alexa: switched to song: main
-INFO:DLIB: SSDP: Done on address 192.168.1.105
+DEBUG:SCRIPT: Alexa: sound stop. just played: main
+DEBUG:SCRIPT: Alexa: switched to song: main
+DEBUG:SCRIPT: SYS: game exits with code zero
+INFO:SOUND: Waiting for OpenAL device to complete
+INFO:DLIB: SSDP: Done on address 10.64.223.224
